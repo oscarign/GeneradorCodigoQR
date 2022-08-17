@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Generador de C&oacute;digo QR</h1>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Texto</th>
+                    <th>&nbsp;</th>
+                    <th scope="col">C&oacute;digo Generado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center"><textarea id="textoQR" style="width:350px; height:350px;"></textarea></td>
+                    <td align="center" valign="middle">
+                        <button type="button" class="btn btn-primary" onclick="fxGenerarQR()">Generar QR</button>
+                    </td>
+                    <td align="center">
+                        <div style="width:350px; height:350px; border:solid 1px #CCC;">
+                            <img id="imagenQR" src="images/qr.png" alt="Codigo QR" style="width:350px; height:350px;" />
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+
+    <script>
+
+        function fxGenerarQR() {
+            var imagenQR = document.getElementById("imagenQR");
+            var textoQR = encodeURI($("#textoQR").val());
+
+            var qrW = 350;
+            var qrH = 350;
+
+            if (textoQR.trim().length == 0) {
+                alert('Debe escribir un texto para el código QR')
+                return false;
+            }
+
+            var qrUrl = 'https://image-charts.com/chart?chs=' + qrW + 'x' + qrH + '&cht=qr&chl=' + textoQR + '&choe=UTF-8';
+
+            imagenQR.src = qrUrl;
+
+
+        }
+
+    </script>
+
+}
