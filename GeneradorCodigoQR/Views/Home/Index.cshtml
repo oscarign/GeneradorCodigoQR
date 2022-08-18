@@ -47,9 +47,10 @@
                 return false;
             }
 
-            var qrUrl = 'https://image-charts.com/chart?chs=' + qrW + 'x' + qrH + '&cht=qr&chl=' + textoQR + '&choe=UTF-8';
+            var qrUrl = `https://image-charts.com/chart?chs=${qrW}x${qrH}&cht=qr&chl=${textoQR}&choe=UTF-8`;
 
             imagenQR.src = qrUrl;
+            alert(qrUrl);
 
 
         }
